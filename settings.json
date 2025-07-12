@@ -1,0 +1,14 @@
+{
+    "server": {
+        "host": "localhost",
+        "port": 80,
+        "php_port": 9000
+    },
+    "paths": {
+        "app_dir": "app",
+        "static_dir": "static",
+        "logs_dir": "logs"
+    },
+    "auto_open_browser": true,
+    "phoenix_theme": true
+}
