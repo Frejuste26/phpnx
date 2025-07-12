@@ -90,6 +90,65 @@ PHPNX est un launcher **portable, automatisé et stylé** basé sur **NGINX + PH
 
 ---
 
+---
+
+## 🗺️ État du Projet & Feuille de Route
+
+> Voici un aperçu clair des fonctionnalités **actuellement en place**, celles **en cours de développement**, et celles **que nous imaginons pour l'avenir**.  
+
+### ✅ Fonctionnalités déjà codées
+
+- [x] 📦 Environnement 100% portable (aucune installation système requise)
+- [x] 🐍 Script Python `server.py` interactif (start, stop, restart)
+- [x] 🧪 Menu en ligne de commande avec choix utilisateur
+- [x] 🪄 Lancement automatique de PHP FastCGI + NGINX
+- [x] 🌐 Ouverture du navigateur sur `http://localhost`
+- [x] ⚙️ Détection et création automatique d’un environnement virtuel Python `.env`
+- [x] 📁 Structure standardisée (`php/`, `nginx/`, `app/`, `static/`)
+- [x] 🎨 Interface de démarrage HTML stylée et animée
+- [x] 📜 Footer enrichi avec infos personnelles (contact, email, GitHub, portfolio…)
+- [x] 🧼 Nettoyage automatique des anciens processus avant démarrage
+
+---
+
+### 🏗️ Fonctionnalités à venir
+
+- [ ] 🧭 Interface graphique Python avec `tkinter` ou `PyQt` pour les non-techs
+- [ ] 📊 Page d’accueil avec statistiques PHP (RAM, version, modules actifs, etc.)
+- [ ] 🪪 Interface d’authentification pour restreindre l’accès à certaines ressources
+- [ ] 🌐 Multi-sites support (accueillir plusieurs projets PHP dans un seul serveur)
+- [ ] 🔄 Actualisation automatique du serveur lors des changements de fichiers
+- [ ] 🔐 Intégration SSL locale avec `mkcert` (https://localhost)
+- [ ] 🧠 Assistant CLI pour ajouter automatiquement un nouveau projet
+- [ ] 📁 Configuration dynamique de `nginx.conf` via le script Python
+
+---
+
+### 💡 Fonctionnalités envisagées
+
+> Ce sont des idées ambitieuses, ouvertes à contributions externes :
+
+- 🧬 Plugin système (créer et charger des extensions pour PHPNX)
+- 💻 Version Linux portable (avec PHP & NGINX embarqués)
+- 📦 Création d’un installeur `.exe` avec **icône Phoenix**
+- 🧱 Intégration avec Docker en option
+- 🛰️ Mise à jour automatique du launcher via GitHub
+- 🧩 Module pour intégrer un éditeur de code minimaliste embarqué
+
+---
+
+### 🧑‍💻 Nous avons besoin de :
+
+| Rôle                | Description                                     |
+|---------------------|-------------------------------------------------|
+| 💻 Dev Python        | Pour améliorer le launcher et les automatisations |
+| 🌐 Dev Web Frontend  | Pour améliorer la page HTML par défaut           |
+| ⚙️ Dev Ops           | Pour intégrer Docker et config SSL locale        |
+| 🎨 UI/UX Designer    | Pour créer un vrai branding visuel Phoenix       |
+| 📖 Rédacteur Docs    | Pour mieux documenter l’usage de chaque module   |
+
+---
+
 ## 🤝 Contribuer
 
 Tu es développeur, designer, testeur, devOps, ou juste passionné de belles choses ?
