@@ -66,7 +66,7 @@ PHPNX est un launcher **portable, automatisé et stylé** basé sur **NGINX + PH
 
 1. **Cloner le repo ou télécharger le .zip**
 2. Placer vos fichiers PHP dans le dossier `app/`
-3. Double-cliquer sur `start_phpnx.bat`
+3. Double-cliquer sur `phpnx.bat`
 4. ✨ C’est lancé. Votre serveur est prêt sur [http://localhost](http://localhost)
 
 ---
