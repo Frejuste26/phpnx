@@ -1,83 +1,112 @@
 @echo off
-setlocal EnableDelayedExpansion
+chcp 65001 >nul
+title 🔥 PHPNX - Le Phoenix s'élève !
 
-REM === Configuration des couleurs ===
-set GREEN=[92m
-set RED=[91m
-set YELLOW=[93m
-set RESET=[0m
+:: Définir les couleurs
+set "RED=[31m"
+set "GREEN=[32m"
+set "YELLOW=[33m"
+set "BLUE=[34m"
+set "MAGENTA=[35m"
+set "CYAN=[36m"
+set "WHITE=[37m"
+set "RESET=[0m"
 
-REM === Dossier de l'environnement virtuel ===
-set ENV_PATH=.env
-set ACTIVATOR=%ENV_PATH%\Scripts\activate.bat
-set PYTHON_SCRIPT=server.py
-
-REM === Forcer le répertoire de travail ===
-cd /d C:\phpnx
-
-REM === Affichage de l'en-tête ===
+:: Bannière Phoenix
 echo.
-echo %GREEN%╔══════════════════════════════════════════════╗%RESET%
-echo %GREEN%║ 🔥 Lancement de PHPNX avec environnement venv ║%RESET%
-echo %GREEN%╚══════════════════════════════════════════════╝%RESET%
+echo %MAGENTA%    ████████╗██╗  ██╗██████╗ ███╗   ██╗██╗  ██╗
+echo     ██╔═══██║██║  ██║██╔══██╗████╗  ██║╚██╗██╔╝
+echo     ██║   ██║███████║██████╔╝██╔██╗ ██║ ╚███╔╝ 
+echo     ██║   ██║██╔══██║██╔═══╝ ██║╚██╗██║ ██╔██╗ 
+echo     ╚██████╔╝██║  ██║██║     ██║ ╚████║██╔╝ ██╗
+echo      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═══╝╚═╝  ╚═╝%RESET%
+echo.
+echo %YELLOW%🔥 Le Phoenix s'élève ! 🐦‍🔥%RESET%
+echo %CYAN%Environnement PHP portable et élégant%RESET%
+echo %WHITE%Développé par Kei Prince Frejuste%RESET%
 echo.
 
-REM === Vérification de Python ===
-where python >nul 2>nul
-if %ERRORLEVEL% neq 0 (
-    echo %RED%[ERREUR] ❌ Python n'est pas installé ou non accessible dans le PATH.%RESET%
-    echo %YELLOW%👉 Veuillez installer Python et l'ajouter au PATH.%RESET%
+:: Vérifier Python
+echo %CYAN%[INFO]%RESET% Vérification de Python...
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo %RED%[ERREUR]%RESET% Python n'est pas installé ou non trouvé dans le PATH
+    echo %YELLOW%Veuillez installer Python 3.8+ depuis https://python.org%RESET%
     echo.
     pause
     exit /b 1
 )
 
-REM === Vérification de la version de Python ===
-python --version | findstr /R "3\.[7-9]" >nul
-if %ERRORLEVEL% neq 0 (
-    echo %RED%[ERREUR] ❌ Python 3.7+ requis. Version actuelle non compatible.%RESET%
-    echo.
-    pause
-    exit /b 1
-)
-
-REM === Vérification de l'environnement virtuel ===
-if exist "%ACTIVATOR%" (
-    echo %GREEN%[OK] Environnement Python détecté : %ENV_PATH%%RESET%
-    call "%ACTIVATOR%"
-    echo %GREEN%[INFO] Environnement virtuel activé.%RESET%
-) else (
-    echo %RED%[ERREUR] ❌ Aucun environnement virtuel trouvé à %ENV_PATH%%RESET%
-    echo %YELLOW%👉 Création d'un nouvel environnement virtuel...%RESET%
-    python -m venv %ENV_PATH%
-    if !ERRORLEVEL! neq 0 (
-        echo %RED%[ERREUR] ❌ Échec de la création de l'environnement virtuel.%RESET%
-        echo.
+:: Créer l'environnement virtuel si nécessaire
+if not exist ".env" (
+    echo %CYAN%[INFO]%RESET% Création de l'environnement virtuel Python...
+    python -m venv .env
+    if errorlevel 1 (
+        echo %RED%[ERREUR]%RESET% Impossible de créer l'environnement virtuel
         pause
         exit /b 1
     )
-    echo %GREEN%[OK] Environnement virtuel créé : %ENV_PATH%%RESET%
-    call "%ACTIVATOR%"
-    echo %GREEN%[INFO] Environnement virtuel activé.%RESET%
 )
 
-REM === Vérification du script Python ===
-if not exist "%PYTHON_SCRIPT%" (
-    echo %RED%[ERREUR] ❌ Le script %PYTHON_SCRIPT% est introuvable.%RESET%
-    echo %YELLOW%👉 Assurez-vous que %PYTHON_SCRIPT% existe dans le répertoire courant.%RESET%
+:: Activer l'environnement virtuel
+echo %CYAN%[INFO]%RESET% Activation de l'environnement virtuel...
+call .env\Scripts\activate.bat
+
+:: Installer les dépendances
+if exist "requirements.txt" (
+    echo %CYAN%[INFO]%RESET% Installation des dépendances...
+    pip install -r requirements.txt --quiet
+    if errorlevel 1 (
+        echo %YELLOW%[ATTENTION]%RESET% Certaines dépendances n'ont pas pu être installées
+        echo %CYAN%[INFO]%RESET% Tentative d'installation manuelle...
+        pip install psutil colorama --quiet
+    )
+)
+
+:: Vérifier les dépendances critiques
+echo %CYAN%[INFO]%RESET% Vérification des dépendances critiques...
+
+:: Vérifier PHP
+if not exist "php\php-cgi.exe" (
+    echo %RED%[ERREUR]%RESET% PHP-CGI non trouvé dans le dossier php/
+    echo %YELLOW%Guide d'installation:%RESET%
+    echo 1. Télécharger PHP depuis https://www.php.net/downloads
+    echo 2. Extraire dans le dossier php/
+    echo 3. Vérifier que php-cgi.exe est présent
     echo.
     pause
     exit /b 1
 )
 
-REM === Lancement du script Python ===
-echo %GREEN%[INFO] Lancement de %PYTHON_SCRIPT%...%RESET%
-python "%PYTHON_SCRIPT%"
-if %ERRORLEVEL% neq 0 (
-    echo %RED%[ERREUR] ❌ Échec de l'exécution de %PYTHON_SCRIPT%.%RESET%
+:: Vérifier NGINX
+if not exist "nginx\nginx.exe" (
+    echo %RED%[ERREUR]%RESET% NGINX non trouvé dans le dossier nginx/
+    echo %YELLOW%Guide d'installation:%RESET%
+    echo 1. Télécharger NGINX depuis https://nginx.org/en/download.html
+    echo 2. Extraire dans le dossier nginx/
+    echo 3. Vérifier que nginx.exe est présent
     echo.
     pause
     exit /b 1
 )
 
-echo %GREEN%[OK] Exécution terminée.%RESET%
+:: Lancer PHPNX
+echo %GREEN%[SUCCESS]%RESET% Toutes les dépendances sont présentes
+echo %MAGENTA%🚀 Lancement de PHPNX...%RESET%
+echo.
+
+:: Démarrer le script Python
+python phpnx.py
+
+:: Nettoyage en cas d'arrêt
+echo.
+echo %YELLOW%🔥 Le Phoenix retourne aux cendres...%RESET%
+echo %CYAN%Nettoyage des processus...%RESET%
+
+:: Tuer les processus PHP et NGINX si ils existent encore
+taskkill /F /IM php-cgi.exe >nul 2>&1
+taskkill /F /IM nginx.exe >nul 2>&1
+
+echo %GREEN%✅ Nettoyage terminé%RESET%
+echo.
+pause
