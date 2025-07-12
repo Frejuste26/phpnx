@@ -90,8 +90,6 @@ PHPNX est un launcher **portable, automatisé et stylé** basé sur **NGINX + PH
 
 ---
 
----
-
 ## 🗺️ État du Projet & Feuille de Route
 
 > Voici un aperçu clair des fonctionnalités **actuellement en place**, celles **en cours de développement**, et celles **que nous imaginons pour l'avenir**.  
