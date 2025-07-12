@@ -106,10 +106,10 @@ Voici comment contribuer :
 
 ## 🧙‍♂️ Auteur
 
-()Kei Prince Frejuste
-()💼 Web & Software Developer
-()📫 keifrejuste26@gmail.com 
-()🌐 [Portfolio]([https://frejuste.dev](https://portfolio-edumanagers-projects.vercel.app/)) | [GitHub](https://github.com/frejuste26)
+> Kei Prince Frejuste
+> 💼 Web & Software Developer
+> 📫 keifrejuste26@gmail.com
+> 🌐 [Portfolio]([https://frejuste.dev](https://portfolio-edumanagers-projects.vercel.app/)) | [GitHub](https://github.com/frejuste26)
 
 ---
 
