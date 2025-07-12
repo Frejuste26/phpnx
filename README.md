@@ -79,6 +79,14 @@ PHPNX est un launcher **portable, automatisé et stylé** basé sur **NGINX + PH
 
 ---
 
+## 📥 Installation manuelle
+
+1. Télécharge PHP depuis [php.net](https://www.php.net/downloads)
+2. Télécharge NGINX depuis [nginx.org](https://nginx.org/en/download.html)
+3. Place les deux dossiers dans `C:/phpnx/php` et `C:/phpnx/nginx`
+
+---
+
 ## 🧪 Mode terminal (optionnel)
 
 ```bash
