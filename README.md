@@ -28,15 +28,35 @@ PHPNX est un launcher **portable, automatisé et stylé** basé sur **NGINX + PH
 ## 🧱 Structure du Projet
 
 ```bash
-  phpnx/
-  ├── app/ # Vos fichiers PHP (index.php, etc.)
-  ├── nginx/ # NGINX portable
-  ├── php/ # PHP portable
-  ├── .env/ # Environnement virtuel Python
-  ├── phpnx.py # Script interactif (start, stop, restart)
-  ├── phpnx.bat # Lanceur Windows
-  ├── static/ # favicon, CSS, assets...
-  └── README.md
+phpnx/
+├── app/                    # Vos fichiers PHP
+│   ├── index.php          # Page d'accueil par défaut
+│   └── info.php           # Page info PHP (optionnel)
+├── nginx/                 # NGINX portable (à télécharger)
+│   ├── conf/
+│   │   └── nginx.conf     # Configuration NGINX
+│   ├── logs/              # Logs NGINX
+│   └── nginx.exe          # Exécutable NGINX
+├── php/                   # PHP portable (à télécharger)
+│   ├── php.exe
+│   ├── php-cgi.exe
+│   └── php.ini
+├── static/                # Assets statiques
+│   ├── css/
+│   │   └── style.css      # Styles pour l'interface
+│   ├── js/
+│   │   └── script.js      # Scripts JS
+│   └── favicon.ico        # Favicon Phoenix
+├── .env/                  # Environnement virtuel Python (auto-créé)
+├── config/                # Configurations
+│   └── settings.json      # Paramètres PHPNX
+├── logs/                  # Logs du système
+│   └── phpnx.log         # Log principal
+├── phpnx.py              # Script Python principal
+├── phpnx.bat             # Lanceur Windows
+├── requirements.txt      # Dépendances Python
+├── README.md            # Documentation
+└── .gitignore           # Fichiers à ignorer
 ```
 
 
